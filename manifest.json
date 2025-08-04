@@ -7,12 +7,10 @@
     "activeTab",
     "scripting",
     "storage",
-    "clipboardWrite",
-    "identity"
+    "clipboardWrite"
   ],
   "host_permissions": [
-    "<all_urls>",
-    "https://www.googleapis.com/*"
+    "<all_urls>"
   ],
   "background": {
     "service_worker": "background.js"
@@ -34,11 +32,5 @@
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
-  },
-  "oauth2": {
-    "client_id": "YOUR_CLIENT_ID.apps.googleusercontent.com",
-    "scopes": [
-      "https://www.googleapis.com/auth/drive.file"
-    ]
   }
 }

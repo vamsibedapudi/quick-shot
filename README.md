@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  A simple, powerful Chrome extension for capturing and annotating screenshots with built-in Google Drive integration.
+  A simple, powerful Chrome extension for capturing and annotating screenshots.
 </p>
 
 <p align="center">
@@ -19,16 +19,13 @@
 
 ## Features
 
-- 📸 **Multiple Capture Modes**
+- 📸 **Simple Screenshot Capture**
   - Visible area capture
 
-- ✏️ **Built-in Editor**
-  - Highlight important areas
+- ✏️ **Basic Editor**
+  - Highlight important areas  
   - Add arrows and pointers
-  - Insert text annotations
 
-- ☁️ **Google Drive Integration**
-  - One-click upload to your Drive
 
 - 🚀 **Fast & Lightweight**
   - No dependencies
@@ -57,23 +54,20 @@
 ### Taking a Screenshot
 
 1. Click the QuickShot icon in your Chrome toolbar
-2. Choose your capture mode:
-   - **Visible Area** - Captures what you see
+2. Select "Visible Area" to capture what you see
 
 ### Editing
 
 After capture, the editor opens automatically:
 
-- **Highlight** 🖍️ - Draw attention to important areas
+- **Highlight** 🖍️ - Draw rectangles around important areas
 - **Arrow** ➡️ - Point to specific elements
-- **Text** 📝 - Add annotations
-- **Blur** 🔍 - Hide sensitive information
+- **Color picker** - Choose from 4 colors (yellow, red, green, blue)
 
-### Sharing
+### Saving
 
-- **Download** 💾 - Save to your computer
+- **Save** 💾 - Download to your computer
 - **Copy** 📋 - Copy to clipboard
-- **Upload to Drive** ☁️ - Get a shareable link instantly
 
 
 ## Development
@@ -81,11 +75,12 @@ After capture, the editor opens automatically:
 ### Project Structure
 
 ```
-quickshot-extension/
+quick-shot/
 ├── manifest.json          # Extension configuration
 ├── background.js          # Service worker
-├── capture.js            # Content script for captures
-├── capture-ui.css        # Capture UI styles
+├── popup.html            # Extension popup
+├── popup.js              # Popup logic
+├── capture-ui.css        # Minimal capture UI styles
 ├── editor/
 │   ├── index.html        # Editor interface
 │   └── editor.js         # Editor logic
@@ -93,7 +88,6 @@ quickshot-extension/
 │   ├── icon16.png
 │   ├── icon48.png
 │   └── icon128.png
-├── generate-icons.html   # Icon generator utility
 └── README.md
 ```
 
@@ -149,7 +143,6 @@ We love contributions! Here's how to help:
 
 - All image processing happens locally in your browser
 - Screenshots are never sent to our servers
-- Google Drive uploads use Google's secure OAuth
 - You control where your screenshots are stored
 
 ## Support

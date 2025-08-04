@@ -1,4 +1,4 @@
-// QuickShot Editor - Fixed Arrow Drawing and Text Tool
+// QuickShot Editor - Arrow Drawing and Highlight Tools
 
 class ScreenshotEditor {
   constructor() {
@@ -98,11 +98,8 @@ class ScreenshotEditor {
     // Action buttons
     document.getElementById('downloadBtn').addEventListener('click', () => this.download());
     document.getElementById('copyBtn').addEventListener('click', () => this.copyToClipboard());
-    document.getElementById('driveBtn').addEventListener('click', () => this.showDriveModal());
     document.getElementById('undoBtn').addEventListener('click', () => this.undo());
 
-    // Modal
-    document.getElementById('closeModal').addEventListener('click', () => this.closeDriveModal());
 
     // Window resize
     window.addEventListener('resize', () => {
@@ -190,7 +187,7 @@ class ScreenshotEditor {
   handleMouseUp(e) {
     if (!this.isDrawing) return;
 
-    if (this.currentAnnotation && this.activeTool !== 'text') {
+    if (this.currentAnnotation) {
       const pos = this.getMousePos(e);
       this.currentAnnotation.endX = pos.x;
       this.currentAnnotation.endY = pos.y;
@@ -218,72 +215,6 @@ class ScreenshotEditor {
     }
   }
 
-  addTextAnnotation(x, y) {
-    // Prevent multiple text inputs
-    const existingInput = document.querySelector('.text-input');
-    if (existingInput) {
-      existingInput.remove();
-    }
-
-    // Create text input at position
-    const input = document.createElement('input');
-    input.className = 'text-input';
-    input.type = 'text';
-    input.style.position = 'absolute';
-
-    // Calculate position with scale
-    const rect = this.canvas.getBoundingClientRect();
-    input.style.left = (rect.left + x * this.scale) + 'px';
-    input.style.top = (rect.top + y * this.scale) + 'px';
-    input.style.color = this.activeColor;
-
-    // Fix: Add high z-index to ensure it appears above everything
-    input.style.zIndex = '10000';
-
-    document.body.appendChild(input);
-    input.focus();
-
-    const saveText = () => {
-      const text = input.value.trim();
-      if (text) {
-        this.annotations.push({
-          type: 'text',
-          text: text,
-          x: x,
-          y: y,
-          color: this.activeColor,
-          font: '16px Arial'
-        });
-        this.saveHistory();
-        this.redraw();
-      }
-      input.remove();
-      // Fix: Reset drawing state immediately
-      this.isDrawing = false;
-      this.updateCursor();
-    };
-
-    // Fix: Handle blur with a small delay to prevent immediate removal
-    let blurTimeout;
-    input.addEventListener('blur', () => {
-      blurTimeout = setTimeout(saveText, 150);
-    });
-
-    input.addEventListener('focus', () => {
-      if (blurTimeout) clearTimeout(blurTimeout);
-    });
-
-    input.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        saveText();
-      } else if (e.key === 'Escape') {
-        input.remove();
-        this.isDrawing = false;
-        this.updateCursor();
-      }
-    });
-  }
 
   redraw() {
     if (!this.image) return;
@@ -331,9 +262,6 @@ class ScreenshotEditor {
         break;
       case 'arrow':
         this.drawArrow(ann, isPreview);
-        break;
-      case 'text':
-        this.drawText(ann);
         break;
     }
   }
@@ -394,11 +322,6 @@ class ScreenshotEditor {
     this.ctx.globalAlpha = 1;
   }
 
-  drawText(ann) {
-    this.ctx.font = ann.font || '16px Arial';
-    this.ctx.fillStyle = ann.color;
-    this.ctx.fillText(ann.text, ann.x, ann.y);
-  }
 
   saveHistory() {
     // Save a deep copy of current annotations state
@@ -480,13 +403,6 @@ class ScreenshotEditor {
     }
   }
 
-  showDriveModal() {
-    document.getElementById('driveModal').classList.add('show');
-  }
-
-  closeDriveModal() {
-    document.getElementById('driveModal').classList.remove('show');
-  }
 
   showNotification(message, type = 'success') {
     const notification = document.createElement('div');
