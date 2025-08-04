@@ -1,4 +1,4 @@
-# gh
+# QuickShot
 
 <p align="center">
   <img src="icons/icon128.png" alt="QuickShot Logo" width="128" height="128">
