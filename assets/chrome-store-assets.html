@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickShot - Chrome Store Assets</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .asset-preview {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .canvas-container {
+            margin: 20px 0;
+            border: 2px dashed #ddd;
+            display: inline-block;
+        }
+        canvas {
+            display: block;
+        }
+        .description {
+            margin: 15px 0;
+            color: #666;
+        }
+        button {
+            background: #4A90E2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button:hover {
+            background: #357ABD;
+        }
+        .listing-text {
+            background: #f8f8f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>QuickShot Chrome Web Store Assets</h1>
+        
+        <!-- Screenshot Template -->
+        <div class="asset-preview">
+            <h2>Screenshot (1280x800)</h2>
+            <p class="description">Main screenshot showing the extension in action</p>
+            <div class="canvas-container">
+                <canvas id="screenshot" width="1280" height="800"></canvas>
+            </div>
+            <br>
+            <button onclick="downloadCanvas('screenshot', 'quickshot-screenshot.png')">Download Screenshot</button>
+        </div>
+
+        <!-- Small Promo Tile -->
+        <div class="asset-preview">
+            <h2>Small Promotional Tile (440x280)</h2>
+            <p class="description">Used in Chrome Web Store listings</p>
+            <div class="canvas-container">
+                <canvas id="smallPromo" width="440" height="280"></canvas>
+            </div>
+            <br>
+            <button onclick="downloadCanvas('smallPromo', 'quickshot-small-promo.png')">Download Small Promo</button>
+        </div>
+
+        <!-- Store Listing Text -->
+        <div class="asset-preview">
+            <h2>Store Listing Copy</h2>
+            
+            <h3>Short Description (132 characters max)</h3>
+            <div class="listing-text">
+                <pre>Simple, powerful screenshot tool. Capture, annotate with arrows & highlights, then save or copy. No ads, no tracking.</pre>
+            </div>
+
+            <h3>Detailed Description</h3>
+            <div class="listing-text">
+                <pre>QuickShot is the simple, privacy-focused screenshot tool you've been looking for.
+
+<strong>✨ Key Features:</strong>
+• <strong>Instant Capture</strong> - Take screenshots of the visible area with one click
+• <strong>Built-in Editor</strong> - Annotate your screenshots without leaving the browser
+• <strong>Arrow Tool</strong> - Point out important details with customizable arrows
+• <strong>Highlight Tool</strong> - Draw attention to key areas with colored rectangles
+• <strong>Multiple Colors</strong> - Choose from yellow, red, green, or blue annotations
+• <strong>Privacy First</strong> - All processing happens locally, no data ever leaves your browser
+
+<strong>🎯 Perfect For:</strong>
+• Bug reports and feedback
+• Creating tutorials and documentation
+• Highlighting important information
+• Quick visual communication
+• Educational content
+
+<strong>🔒 Your Privacy Matters:</strong>
+• No data collection or tracking
+• No external servers
+• No account required
+• Works completely offline
+• Open source (GPL-3.0)
+
+<strong>💡 How to Use:</strong>
+1. Click the QuickShot icon in your toolbar
+2. Select "Visible Area" to capture
+3. Add arrows and highlights as needed
+4. Save to your computer or copy to clipboard
+
+Simple. Fast. Private. That's QuickShot.
+
+---
+<strong>Open Source:</strong> https://github.com/vamsibedapudi/quick-shot</pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Draw screenshot mockup
+        function drawScreenshot() {
+            const canvas = document.getElementById('screenshot');
+            const ctx = canvas.getContext('2d');
+            
+            // Background
+            ctx.fillStyle = '#f5f5f5';
+            ctx.fillRect(0, 0, 1280, 800);
+            
+            // Browser window mockup
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(100, 100, 1080, 600);
+            
+            // Browser chrome
+            ctx.fillStyle = '#e0e0e0';
+            ctx.fillRect(100, 100, 1080, 40);
+            
+            // Extension popup
+            ctx.fillStyle = '#ffffff';
+            ctx.shadowBlur = 20;
+            ctx.shadowColor = 'rgba(0,0,0,0.2)';
+            ctx.fillRect(900, 140, 200, 120);
+            ctx.shadowBlur = 0;
+            
+            // QuickShot branding in popup
+            ctx.fillStyle = '#4A90E2';
+            ctx.font = 'bold 18px sans-serif';
+            ctx.fillText('QuickShot', 920, 170);
+            
+            // Capture button
+            ctx.fillStyle = '#4A90E2';
+            ctx.fillRect(920, 190, 160, 40);
+            ctx.fillStyle = '#ffffff';
+            ctx.font = '14px sans-serif';
+            ctx.fillText('Visible Area', 950, 215);
+            
+            // Sample webpage with annotations
+            ctx.strokeStyle = '#FF0000';
+            ctx.lineWidth = 5;
+            
+            // Draw arrow
+            ctx.beginPath();
+            ctx.moveTo(300, 300);
+            ctx.lineTo(500, 400);
+            ctx.stroke();
+            
+            // Arrow head
+            ctx.beginPath();
+            ctx.moveTo(500, 400);
+            ctx.lineTo(480, 395);
+            ctx.moveTo(500, 400);
+            ctx.lineTo(485, 380);
+            ctx.stroke();
+            
+            // Highlight rectangle
+            ctx.strokeStyle = '#FFEB3B';
+            ctx.strokeRect(600, 300, 200, 100);
+            
+            // Add text
+            ctx.fillStyle = '#333333';
+            ctx.font = '24px sans-serif';
+            ctx.fillText('Capture. Annotate. Share.', 400, 550);
+        }
+
+        // Draw small promo tile
+        function drawSmallPromo() {
+            const canvas = document.getElementById('smallPromo');
+            const ctx = canvas.getContext('2d');
+            
+            // Gradient background
+            const gradient = ctx.createLinearGradient(0, 0, 440, 280);
+            gradient.addColorStop(0, '#4A90E2');
+            gradient.addColorStop(1, '#357ABD');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 440, 280);
+            
+            // Icon
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            ctx.arc(220, 100, 40, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Camera icon inside circle
+            ctx.fillStyle = '#4A90E2';
+            ctx.fillRect(200, 85, 40, 30);
+            ctx.beginPath();
+            ctx.arc(220, 100, 8, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Text
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 32px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('QuickShot', 220, 180);
+            
+            ctx.font = '16px sans-serif';
+            ctx.fillText('Simple Screenshot Tool', 220, 210);
+        }
+
+        // Download canvas as PNG
+        function downloadCanvas(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+
+        // Initialize
+        drawScreenshot();
+        drawSmallPromo();
+    </script>
+</body>
+</html>
