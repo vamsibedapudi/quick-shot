@@ -147,9 +147,6 @@ class ScreenshotEditor {
       case 'arrow':
         this.canvas.classList.add('arrow-cursor');
         break;
-      case 'text':
-        this.canvas.classList.add('text-cursor');
-        break;
     }
   }
 
@@ -165,28 +162,20 @@ class ScreenshotEditor {
     const pos = this.getMousePos(e);
     this.startX = pos.x;
     this.startY = pos.y;
-
-    if (this.activeTool === 'text') {
-      // For text tool, don't set isDrawing to true initially
-      this.addTextAnnotation(pos.x, pos.y);
-    } else {
-      this.isDrawing = true;
-      this.currentAnnotation = {
-        type: this.activeTool,
-        color: this.activeColor,
-        startX: pos.x,
-        startY: pos.y,
-        endX: pos.x,
-        endY: pos.y
-      };
-      // Update cursor to show we're drawing
-      this.updateCursor();
-    }
+    this.isDrawing = true;
+    this.currentAnnotation = {
+      type: this.activeTool,
+      color: this.activeColor,
+      startX: pos.x,
+      startY: pos.y,
+      endX: pos.x,
+      endY: pos.y
+    };
+    // Update cursor to show we're drawing
+    this.updateCursor();
   }
 
   handleMouseMove(e) {
-    if (!this.isDrawing || this.activeTool === 'text') return;
-
     const pos = this.getMousePos(e);
 
     if (this.currentAnnotation) {
