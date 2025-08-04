@@ -176,5 +176,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
   <br><br>
   <a href="https://github.com/yourusername/quickshot-extension">⭐ Starring the repository</a>
   <br>
-  <a href="#">☕ Buying me a coffee</a>
 </p>
