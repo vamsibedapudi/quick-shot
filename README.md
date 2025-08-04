@@ -40,8 +40,8 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/quickshot-extension.git
-   cd quickshot-extension
+   git clone https://github.com/vamsibedapudi/quick-shot.git
+   cd quick-shot
    ```
 2. **Load in Chrome**
    - Open Chrome and navigate to `chrome://extensions/`
@@ -147,10 +147,8 @@ We love contributions! Here's how to help:
 
 ## Support
 
-- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/yourusername/quickshot-extension/issues)
-- 💡 **Feature Requests**: [Discussions](https://github.com/yourusername/quickshot-extension/discussions)
-- 💬 **Community Chat**: [Discord Server](#)
-- 📧 **Email**: support@quickshot.example.com
+- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/vamsibedapudi/quick-shot/issues)
+- 💡 **Feature Requests**: [Discussions](https://github.com/vamsibedapudi/quick-shot/discussions)
 
 ## License
 
@@ -167,6 +165,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 <p align="center">
   If you find this extension useful, please consider:
   <br><br>
-  <a href="https://github.com/yourusername/quickshot-extension">⭐ Starring the repository</a>
+  <a href="https://github.com/vamsibedapudi/quick-shot">⭐ Starring the repository</a>
   <br>
 </p>
