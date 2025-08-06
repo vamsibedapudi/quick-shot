@@ -19,3 +19,7 @@ ScribShot does NOT collect, store, or transmit any user data.
 ## Contact
 For questions about this privacy policy, please visit:
 https://github.com/vamsibedapudi/scrib-shot/issues
+
+---
+
+**Privacy Policy URL:** https://vamsibedapudi.github.io/scrib-shot/privacy
