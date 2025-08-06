@@ -1,4 +1,4 @@
-// QuickShot Editor - Arrow Drawing and Highlight Tools
+// ScribShot Editor - Arrow Drawing and Highlight Tools
 
 class ScreenshotEditor {
   constructor() {

@@ -1,11 +1,11 @@
-# Privacy Policy for QuickShot
+# Privacy Policy for ScribShot
 
 Last updated: 03 August 2025
 
 ## Data Collection
-QuickShot does NOT collect, store, or transmit any user data.
+ScribShot does NOT collect, store, or transmit any user data.
 
-## How QuickShot Works
+## How ScribShot Works
 - All screenshot processing happens locally in your browser
 - No data is sent to external servers
 - No analytics or tracking codes are included
@@ -18,4 +18,4 @@ QuickShot does NOT collect, store, or transmit any user data.
 
 ## Contact
 For questions about this privacy policy, please visit:
-https://github.com/vamsibedapudi/quick-shot/issues
+https://github.com/vamsibedapudi/scrib-shot/issues

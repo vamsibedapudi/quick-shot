@@ -1,4 +1,4 @@
-// Background service worker for QuickShot extension
+// Background service worker for ScribShot extension
 
 // Listen for messages from content script and popup
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {

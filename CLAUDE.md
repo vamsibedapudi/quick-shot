@@ -1,7 +1,7 @@
-# QuickShot - Claude Development Context
+# ScribShot - Claude Development Context
 
 ## Project Overview
-QuickShot is a simple Chrome extension for capturing and annotating screenshots. It focuses on local processing with no server dependencies.
+ScribShot is a simple Chrome extension for capturing and annotating screenshots. It focuses on local processing with no server dependencies.
 
 ## Architecture
 
@@ -72,17 +72,17 @@ QuickShot is a simple Chrome extension for capturing and annotating screenshots.
 
 2. **Create Release Zip**
    ```bash
-   zip -r quickshot.zip . -x "*.git*" "*.DS_Store*" "README.md" "LICENSE" "CLAUDE.md" "PRIVACY.md" "*assets*" "*.claude*"
+   zip -r scribshot.zip . -x "*.git*" "*.DS_Store*" "README.md" "LICENSE" "CLAUDE.md" "PRIVACY.md" "*assets*" "*.claude*"
    ```
 
 3. **Move to Assets**
    ```bash
-   mv quickshot.zip assets/
+   mv scribshot.zip assets/
    ```
 
 4. **Chrome Web Store Upload**
    - Go to [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole/)
-   - Upload `assets/quickshot.zip`
+   - Upload `assets/scribshot.zip`
    - Fill out store listing details
    - Submit for review
 

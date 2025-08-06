@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "QuickShot - Screenshot Tool",
+  "name": "ScribShot - Screenshot Tool",
   "version": "1.0.0",
   "description": "Simple, powerful screenshots for the web",
   "permissions": [

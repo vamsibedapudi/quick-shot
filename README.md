@@ -1,7 +1,7 @@
-# QuickShot
+# ScribShot
 
 <p align="center">
-  <img src="icons/icon128.png" alt="QuickShot Logo" width="128" height="128">
+  <img src="icons/icon128.png" alt="ScribShot Logo" width="128" height="128">
 </p>
 
 <p align="center">
@@ -40,8 +40,8 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/vamsibedapudi/quick-shot.git
-   cd quick-shot
+   git clone https://github.com/vamsibedapudi/scrib-shot.git
+   cd scrib-shot
    ```
 2. **Load in Chrome**
    - Open Chrome and navigate to `chrome://extensions/`
@@ -53,7 +53,7 @@
 
 ### Taking a Screenshot
 
-1. Click the QuickShot icon in your Chrome toolbar
+1. Click the ScribShot icon in your Chrome toolbar
 2. Select "Visible Area" to capture what you see
 
 ### Editing
@@ -75,7 +75,7 @@ After capture, the editor opens automatically:
 ### Project Structure
 
 ```
-quick-shot/
+scrib-shot/
 ├── manifest.json          # Extension configuration
 ├── background.js          # Service worker
 ├── popup.html            # Extension popup
@@ -147,8 +147,8 @@ We love contributions! Here's how to help:
 
 ## Support
 
-- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/vamsibedapudi/quick-shot/issues)
-- 💡 **Feature Requests**: [Discussions](https://github.com/vamsibedapudi/quick-shot/discussions)
+- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/vamsibedapudi/scrib-shot/issues)
+- 💡 **Feature Requests**: [Discussions](https://github.com/vamsibedapudi/scrib-shot/discussions)
 
 ## License
 
@@ -165,6 +165,6 @@ This project is licensed under the GPL-3.0 License - see the [LICENSE](LICENSE) 
 <p align="center">
   If you find this extension useful, please consider:
   <br><br>
-  <a href="https://github.com/vamsibedapudi/quick-shot">⭐ Starring the repository</a>
+  <a href="https://github.com/vamsibedapudi/scrib-shot">⭐ Starring the repository</a>
   <br>
 </p>

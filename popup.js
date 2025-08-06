@@ -1,4 +1,4 @@
-// Popup script for QuickShot extension
+// Popup script for ScribShot extension
 
 document.addEventListener('DOMContentLoaded', () => {
   // Add click listeners to all option buttons
