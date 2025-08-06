@@ -5,7 +5,6 @@
   "description": "Simple, powerful screenshots for the web",
   "permissions": [
     "activeTab",
-    "scripting",
     "storage",
     "clipboardWrite"
   ],

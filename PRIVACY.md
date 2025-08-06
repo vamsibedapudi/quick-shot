@@ -15,7 +15,6 @@ QuickShot does NOT collect, store, or transmit any user data.
 - **activeTab**: To capture screenshots of the current page
 - **storage**: To temporarily store images during editing (local only)
 - **clipboardWrite**: To copy images to your clipboard
-- **scripting**: To inject the capture interface
 
 ## Contact
 For questions about this privacy policy, please visit:

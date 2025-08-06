@@ -15,16 +15,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     }
   } else if (request.action === 'openEditor') {
     openEditor(request.imageData, request.pageInfo);
-  } else if (request.action === 'uploadToDrive') {
-    uploadToDrive(request.imageData, request.filename)
-      .then(result => sendResponse(result))
-      .catch(error => sendResponse({ success: false, error: error.message }));
-    return true; // Will respond asynchronously
-  } else if (request.action === 'getAuthToken') {
-    getAuthToken()
-      .then(token => sendResponse({ success: true, token }))
-      .catch(error => sendResponse({ success: false, error: error.message }));
-    return true; // Will respond asynchronously
   }
 });
 
@@ -78,87 +68,3 @@ function openEditor(imageData, pageInfo) {
   });
 }
 
-// Google Drive Integration
-async function getAuthToken() {
-  return new Promise((resolve, reject) => {
-    chrome.identity.getAuthToken({ interactive: true }, (token) => {
-      if (chrome.runtime.lastError) {
-        reject(new Error(chrome.runtime.lastError.message));
-      } else {
-        resolve(token);
-      }
-    });
-  });
-}
-
-async function uploadToDrive(imageData, filename) {
-  try {
-    // Get auth token
-    const token = await getAuthToken();
-
-    // Convert base64 to blob
-    const base64Data = imageData.split(',')[1];
-    const byteCharacters = atob(base64Data);
-    const byteNumbers = new Array(byteCharacters.length);
-    for (let i = 0; i < byteCharacters.length; i++) {
-      byteNumbers[i] = byteCharacters.charCodeAt(i);
-    }
-    const byteArray = new Uint8Array(byteNumbers);
-    const blob = new Blob([byteArray], { type: 'image/png' });
-
-    // Create metadata
-    const metadata = {
-      name: filename || `Screenshot_${new Date().toISOString()}.png`,
-      mimeType: 'image/png'
-    };
-
-    // Create form data
-    const form = new FormData();
-    form.append('metadata', new Blob([JSON.stringify(metadata)], { type: 'application/json' }));
-    form.append('file', blob);
-
-    // Upload to Drive
-    const response = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${token}`
-      },
-      body: form
-    });
-
-    if (!response.ok) {
-      throw new Error('Upload failed');
-    }
-
-    const fileData = await response.json();
-
-    // Get shareable link
-    const shareResponse = await fetch(`https://www.googleapis.com/drive/v3/files/${fileData.id}/permissions`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        role: 'reader',
-        type: 'anyone'
-      })
-    });
-
-    if (!shareResponse.ok) {
-      throw new Error('Failed to create shareable link');
-    }
-
-    // Return file info with shareable link
-    return {
-      success: true,
-      fileId: fileData.id,
-      fileName: fileData.name,
-      shareLink: `https://drive.google.com/file/d/${fileData.id}/view?usp=sharing`
-    };
-
-  } catch (error) {
-    console.error('Drive upload error:', error);
-    throw error;
-  }
-}

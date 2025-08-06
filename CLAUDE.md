@@ -19,24 +19,19 @@ QuickShot is a simple Chrome extension for capturing and annotating screenshots.
 
 ## Development Notes
 
-### Removed Features
-- Text tool functionality has been removed
-- Google Drive upload functionality has been removed (as of latest cleanup)
-- OAuth and Drive API permissions removed from manifest
-
-### Current Tools
-1. **Arrow Tool** (`editor.js:289-324`)
+### Available Tools
+1. **Arrow Tool** (`editor.js:288-323`)
    - Draws arrows with arrowheads
-   - Configurable colors
-2. **Highlight Tool** (`editor.js:270-287`)
-   - Draws colored rectangles
-   - Used for emphasizing areas
+   - 4 available colors: yellow, red, green, blue
+2. **Highlight Tool** (`editor.js:269-286`)
+   - Draws colored rectangles for emphasizing areas
+   - Same 4 color options as arrow tool
 
 ### Code Style
 - Vanilla JavaScript (no frameworks)
 - Modern ES6+ syntax
 - Canvas 2D API for drawing
-- Chrome Extension APIs (storage, scripting, etc.)
+- Chrome Extension APIs (storage, etc.)
 
 ### Testing
 - Load unpacked extension in `chrome://extensions/`
@@ -50,7 +45,6 @@ QuickShot is a simple Chrome extension for capturing and annotating screenshots.
 
 ### Permissions Used
 - `activeTab` - Access current tab for screenshots
-- `scripting` - Inject capture UI
 - `storage` - Store captured images temporarily
 - `clipboardWrite` - Copy screenshots to clipboard
 
@@ -66,6 +60,45 @@ QuickShot is a simple Chrome extension for capturing and annotating screenshots.
 - Use Chrome DevTools on extension popup
 - Use `chrome://extensions/` for service worker logs
 - Editor page can be debugged like normal web page
+
+## Release Process
+
+### Creating Release Package for Chrome Web Store
+
+1. **Pre-flight Check**
+   - Ensure all functionality works in unpacked extension
+   - Verify permissions are minimal and correct
+   - Test screenshot capture and annotation tools
+
+2. **Create Release Zip**
+   ```bash
+   zip -r quickshot.zip . -x "*.git*" "*.DS_Store*" "README.md" "LICENSE" "CLAUDE.md" "PRIVACY.md" "*assets*" "*.claude*"
+   ```
+
+3. **Move to Assets**
+   ```bash
+   mv quickshot.zip assets/
+   ```
+
+4. **Chrome Web Store Upload**
+   - Go to [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole/)
+   - Upload `assets/quickshot.zip`
+   - Fill out store listing details
+   - Submit for review
+
+### Files Included in Release
+- `manifest.json` - Extension configuration
+- `background.js` - Service worker
+- `popup.html` & `popup.js` - Extension popup
+- `capture-ui.css` - Minimal capture UI styles
+- `editor/` - Screenshot annotation editor
+- `icons/` - Extension icons
+
+### Files Excluded from Release
+- Documentation files (README.md, CLAUDE.md, PRIVACY.md, LICENSE)
+- Git files and .DS_Store
+- Assets folder (promotional images)
+- Claude settings
 
 ### Future Enhancements
 - Full page capture
