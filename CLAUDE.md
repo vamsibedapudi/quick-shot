@@ -72,7 +72,7 @@ ScribShot is a simple Chrome extension for capturing and annotating screenshots.
 
 2. **Create Release Zip**
    ```bash
-   zip -r scribshot.zip . -x "*.git*" "*.DS_Store*" "README.md" "LICENSE" "CLAUDE.md" "PRIVACY.md" "*assets*" "*.claude*"
+   zip -r scribshot.zip . -x "*.git*" "*.DS_Store*" "README.md" "LICENSE" "CLAUDE.md" "*assets*" "*docs*" "*.claude*"
    ```
 
 3. **Move to Assets**
@@ -95,9 +95,10 @@ ScribShot is a simple Chrome extension for capturing and annotating screenshots.
 - `icons/` - Extension icons
 
 ### Files Excluded from Release
-- Documentation files (README.md, CLAUDE.md, PRIVACY.md, LICENSE)
+- Documentation files (README.md, CLAUDE.md, LICENSE)
 - Git files and .DS_Store
-- Assets folder (promotional images)
+- Assets folder (promotional images)  
+- Docs folder (GitHub Pages site)
 - Claude settings
 
 ### Future Enhancements
